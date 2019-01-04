@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+#snackbar {
+  visibility: hidden;
+  min-width: 250px;
+  margin-left: -125px;
+  background-color: #333;
+  color: #fff;
+  text-align: center;
+  border-radius: 2px;
+  padding: 16px;
+  position: fixed;
+  z-index: 1;
+  left: 50%;
+  bottom: 30px;
+  font-size: 17px;
+}
+#snackbar.show {
+  visibility: visible;
+  -webkit-animation: fadein 0.5s, fadeout 0.5s 2.5s;
+  animation: fadein 0.5s, fadeout 0.5s 2.5s;
+}
+</style>
+</head>
+<body>
+<button onclick="first()">First</button>
+<div id="snackbar"></div>
+<input type="text" id="t1" value="1">
+<button onclick="sometxt()">second</button>
+<script>
+function first() {
+  document.getElementById("snackbar").innerHTML = "Default txt";
+  let x = document.getElementById("snackbar");
+  x.className = "show";
+  setTimeout(function(){
+  	x.className = x.className.replace("show", ""); 
+  }, 3000);
+}
+function sometxt() {
+ let a = document.getElementById("t1").value;
+ if(a == "") document.getElementById("snackbar").innerHTML = "Инпут не должен быть пустой";
+ else document.getElementById("snackbar").innerHTML = a;
+ let x = document.getElementById("snackbar");
+ x.className = "show";
+ setTimeout(function(){ x.className = x.className.replace("show", ""); }, 3000);
+}
+</script>
+
+</body>
+</html>
